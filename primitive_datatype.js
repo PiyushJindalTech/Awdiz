@@ -1,39 +1,31 @@
-// var name = { user: "Ankur" };
+let user = { name: "Ankur" };
 
-// var name_1 = name;
+let new_user = user;
 
+console.log('Name: ', user);
 
-// name = ["Ankit"];
+console.log('Name_1: ', new_user);
 
+user.name = "Ankit";
 
-// console.log('Name: ', name);
+console.log('Name: ', user);
 
-// console.log('Name_1', name_1);
-
-
-// m^n
-
-let m = 5;
-let n = 3;
-// 125
-let output = 1;
+console.log('Name_1: ', new_user);
 
 
-for (let i = 0; i < n; i++) {
-    output = output * m // 5, 25, 125
-}
-
-console.log(output);
 
 
-// 1+2+4+8+16
+let users = ['Ankit']
 
-const arr = [1, 2, 4, 8, 16];
-let sum = 0 ;
+let new_users = users;
 
-for(let i =0; i< arr.length; i++){
-    sum = sum + arr[i]; // 1
-}
+console.log('Users: ', users);
 
+console.log('New_users: ', new_users);
 
+users.push('Ankur');
+
+console.log('Users: ', users);
+
+console.log('New_users: ', new_users);
 
