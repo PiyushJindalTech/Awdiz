@@ -5,6 +5,9 @@ function calculatePower(base, power) {
         throw Error('base should be an positive interger');
     }
 
+    console.log('1');
+    console.log('2');
+
     if (parseInt(power) !== power) {
         throw Error('power should be an positive interger');
     }

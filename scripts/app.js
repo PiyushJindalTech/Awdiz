@@ -28,8 +28,7 @@ function onEditEmail(event) {
 }
 
 btnLogin.addEventListener("click", onLogin);
-txtEmail.addEventListener("keypress", onEditEmail);
+txtEmail.addEventListener("keyup", onEditEmail);
 
 
 console.log(btnLogin);
-
