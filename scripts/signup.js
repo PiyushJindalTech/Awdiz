@@ -5,7 +5,7 @@ const txtEmailId = document.getElementById('txtEmailId');
 const txtPassword = document.getElementById('txtPassword');
 const txtConfirmPassword = document.getElementById('txtConfirmPassword');
 
-const lblInvalidPassword = document.getElementById('lblInvalidPassword');
+const lblErrorFirstName = document.getElementById('lblErrorFirstName');
 
 const users = [];
 
@@ -16,11 +16,32 @@ function onSignUp() {
     const password = txtPassword.value;
     const confirmPassword = txtConfirmPassword.value;
 
-    if (password !== confirmPassword) {
-        alert('password and confirm-password doesn\'t match');
-        return;
+    let errorMessage = '';
+
+    if (firstName.trim() === '') {
+        errorMessage += 'first name should not empty\n\r';
     }
 
+    if (lastName.trim() === '') {
+        errorMessage += '\nlast name should not empty\n\r';
+    }
+
+    if (emailId.trim() === '') {
+        errorMessage += '\nEmail-Id should not empty\n\r';
+    }
+
+    if (password.trim() === '') {
+        errorMessage += '\nPassword should not empty\n\r';
+    }
+
+    if (confirmPassword.trim() !== password.trim()) {
+        errorMessage += '\nPassword and Confirm Password should be Same\n\r';
+    }
+
+    if (errorMessage !== '') {
+        alert(errorMessage);
+        return;
+    }
     const user = {
         firstName: firstName,
         lastName: lastName,
@@ -31,18 +52,23 @@ function onSignUp() {
     console.log(users);
 }
 
-function onConfirmChange(event) {
-    const password = txtPassword.value;
-    const confirmPassword = txtConfirmPassword.value;
+function onChangeFirstName(event) {
+    const enteredKey = event.key;
+    console.log(event.key);
 
-    if (password.slice(0, confirmPassword.length) !== confirmPassword) {
-        lblInvalidPassword.style.display = 'inline';
+    let pattern = /[a-zA-Z]/g;
+    if (enteredKey.match(pattern) === null) {
+        lblErrorFirstName.style.display = 'inline';
+    
+        if (txtFirstName.value.length < 2) {
+            txtFirstName.value = '';
+        }
+        txtFirstName.value = txtFirstName.value.match(pattern).join('')
     }
     else {
-        lblInvalidPassword.style.display = 'none';
+        lblErrorFirstName.style.display = 'none';
     }
-    return true;
 }
 
+txtFirstName.addEventListener('keyup', onChangeFirstName);
 btnSignup.addEventListener('click', onSignUp);
-txtConfirmPassword.addEventListener('keyup', onConfirmChange);
